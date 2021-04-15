@@ -13,15 +13,11 @@ npm install
 The example script shows how we can integrate the polygon-did-resolver:
 
 ```
+const url = https://rpc-mumbai.matic.today; // For polygon testnet
 const provider = new ethers.providers.JsonRpcProvider(url);
-let wallet = new ethers.Wallet(process.env.PRIVATE_KEY, provider);
-let registry = new ethers.Contract(DID_ADDRESS, polygonDIDResolveABI, wallet);
-import { polygonDIDResolveABI } from './PolygonDIDResolveABI';
+let wallet = new ethers.Wallet(<Signer key/Private Key>, provider);
+let registry = new ethers.Contract(<Contract Address>, <Contract ABI>, wallet);
 
-let returnDidDoc = await registry.functions.getDID(address)
-    .then((resDidDocument) => {
-        return resDidDocument;
-    })
-return returnDidDoc;
+let returnDidDoc = await registry.functions.getDID(<DID Address>)
 ```
 
