@@ -59,8 +59,6 @@ export class PolyGonDIDRResolve {
      */
     async getDID(address: string): Promise<string> {
         try {
-            logger.info("*********** resolveDID PolygonRegister ***********");
-
             // Calling smart contract with getting DID Document
             let returnDidDoc = await registry.functions.getDID(address)
                 .then((resDidDocument) => {
