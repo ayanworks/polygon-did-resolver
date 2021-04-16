@@ -64,11 +64,8 @@ export class PolyGonDIDRResolve {
             // Calling smart contract with getting DID Document
             let returnDidDoc = await registry.functions.getDID(address)
                 .then((resDidDocument) => {
-
-                    logger.debug(`****** [resolveDID] ****** resDidDocument - ${JSON.stringify(resDidDocument)} \n\n\n`);
                     return resDidDocument;
                 })
-            logger.debug(`****** [resolveDID] ****** returnDidDoc - ${JSON.stringify(returnDidDoc)} \n\n\n`);
             return returnDidDoc;
         }
         catch (error) {
