@@ -15,8 +15,6 @@ let registry = new ethers.Contract(DID_ADDRESS, polygonDIDResolveABI, wallet);
 const logger = log4js.getLogger();
 logger.level = process.env.LOGGER_LEVEL;
 
-const did = process.argv[2];
-
 /**
  * Match DID and address and then sending to the internal function 
  * @param did 
