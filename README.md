@@ -1,6 +1,6 @@
 # Polygon DID Resolver
 
-The polygon resolver library is used for resolving DID’s in Polygon Method Space
+The polygon resolver library is used for resolving DID’s in Polygon Method Space. The module is supposed to be used as an integeration to polygon library.
 
 ## Install
 
