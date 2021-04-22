@@ -2,9 +2,6 @@ module.exports = {
     clearMocks: true,
     verbose: true,
     testEnvironment: "node",
-    // testMatch: [
-    //     "**/__tests__/**/*.[jt]s?(x)", "**/?(*.)+(spec|test).[jt]s?(x)"
-    // ],
     transform: {
         '^.+\\.ts?$': 'ts-jest',
     },
