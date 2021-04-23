@@ -21,3 +21,10 @@ let registry = new ethers.Contract(<Contract Address>, <Contract ABI>, wallet);
 let returnDidDoc = await registry.functions.getDID(<DID Address>)
 ```
 
+## Testing
+
+For testing use the command
+
+```
+npm run test
+```
