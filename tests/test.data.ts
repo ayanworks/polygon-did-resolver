@@ -1,4 +1,4 @@
 
-export const testDid = 'did:polygon:0x88f8ce435611f27bc89525b47fc147632bbdadac'
+export const testDid = 'did:polygon:0xdfecea0da89d2912105a60cc862192172f66985f'
 
-export const privateKey = "0x0a791f0cc4d832171a65891e08d106a3437d2061dfc4a276efc96eac25f96bd1"
+export const privateKey = "0x7cd54a79f153402e1a9349188a67b1c9df510c83d27922f50de119d8d787b4fa"
