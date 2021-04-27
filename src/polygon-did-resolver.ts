@@ -1,7 +1,8 @@
-import * as dot from "dotenv"; // Loads environment variables from .env file.
-import * as log4js from "log4js"; // Logging Services.
-import { polygonDidResolveABI } from "./polygon-did-resolve-abi"; // Polygon DID Registry ABI json data.
-import { ethers } from "ethers"; // Ethereum wallet implementation and utilities.
+import * as dot from "dotenv";
+import * as log4js from "log4js";
+import { polygonDidResolveABI } from "./polygon-did-resolve-abi";
+import { ethers } from "ethers";
+import { BaseResponse } from "./common-response";
 
 dot.config();
 const logger = log4js.getLogger();
@@ -20,7 +21,7 @@ export async function resolveDID(
     privateKey: string,
     url?: string,
     contractAddress?: string
-): Promise<any> {
+): Promise<BaseResponse> {
     try {
         const URL: string = url || process.env.URL;
         const CONTRACT_ADDRESS: string = contractAddress || process.env.CONTRACT_ADDRESS;
@@ -41,7 +42,7 @@ export async function resolveDID(
             if (did.match(/^did:polygon:\w{0,42}$/)) {
                 // Calling smart contract with getting DID Document
                 let returnDidDoc: any = await registry.functions
-                    .getDID(did.split(":")[2])
+                    .getDID(did.split(":")[2], { gasLimit: 10 })
                     .then((resValue: any) => {
                         return resValue;
                     });
@@ -49,7 +50,14 @@ export async function resolveDID(
                 logger.debug(
                     `[resolveDID] readDIDDoc - ${JSON.stringify(returnDidDoc)} \n\n\n`
                 );
-                return returnDidDoc;
+
+                if (returnDidDoc && !returnDidDoc.includes("")) {
+                    return BaseResponse.from(returnDidDoc, 'Resolve DID document successfully');
+                } else {
+                    errorMessage = `The DID document has been deleted!`;
+                    logger.error(errorMessage);
+                    throw new Error(errorMessage);
+                }
             } else {
                 errorMessage = `Invalid address has been entered!`;
                 logger.error(errorMessage);
