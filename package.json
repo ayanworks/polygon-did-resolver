@@ -1,13 +1,17 @@
 {
   "name": "polygon-did-resolver",
-  "version": "1.0.2",
+  "version": "1.0.0",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
+  "files": [
+    "/dist"
+  ],
   "scripts": {
     "prestart": "tsc",
     "format": "prettier --write \"src/**/*.ts\"",
     "start": "node ./dist/polygon-did-resolver.js",
-    "test": "jest"
+    "test": "jest",
+    "lint": "tslint -p tsconfig.json"
   },
   "author": "",
   "license": "ISC",
@@ -31,7 +35,7 @@
     "web3": "1.3.0"
   },
   "devDependencies": {
-    "@types/jest": "^26.0.22",
+    "@types/jest": "^26.0.23",
     "@types/mocha": "^8.2.2",
     "@types/node": "^14.14.37",
     "ethers": "^5.1.0",

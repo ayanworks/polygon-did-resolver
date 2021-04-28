@@ -2,11 +2,12 @@ import * as dot from "dotenv";
 import * as log4js from "log4js";
 import { polygonDidResolveABI } from "./polygon-did-resolve-abi";
 import { ethers } from "ethers";
-import { BaseResponse } from "./common-response";
+import { BaseResponse } from "./base-response";
+import { default as CommonConstants } from "./configuration";
 
 dot.config();
 const logger = log4js.getLogger();
-logger.level = process.env.LOGGER_LEVEL;
+logger.level = `${CommonConstants.LOGGER_LEVEL}`;
 
 /**
  * Resolves DID Document
@@ -23,8 +24,9 @@ export async function resolveDID(
     contractAddress?: string
 ): Promise<BaseResponse> {
     try {
-        const URL: string = url || process.env.URL;
-        const CONTRACT_ADDRESS: string = contractAddress || process.env.CONTRACT_ADDRESS;
+
+        const URL: string = url || `${CommonConstants.URL}`;
+        const CONTRACT_ADDRESS: string = contractAddress || `${CommonConstants.CONTRACT_ADDRESS}`;
 
         const provider: ethers.providers.JsonRpcProvider = new ethers.providers.JsonRpcProvider(
             URL
@@ -42,7 +44,7 @@ export async function resolveDID(
             if (did.match(/^did:polygon:\w{0,42}$/)) {
                 // Calling smart contract with getting DID Document
                 let returnDidDoc: any = await registry.functions
-                    .getDID(did.split(":")[2], { gasLimit: 10 })
+                    .getDID(did.split(":")[2])
                     .then((resValue: any) => {
                         return resValue;
                     });
