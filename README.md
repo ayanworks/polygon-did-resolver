@@ -20,6 +20,10 @@ The function returns a DID Document.
 
 ## Testing
 
+## Testing
+
+For testing use the command
+
 ```
 npm run test
 ```
