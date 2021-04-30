@@ -56,7 +56,7 @@ export async function resolveDID(
                 if (returnDidDoc && !returnDidDoc.includes("")) {
                     return BaseResponse.from(returnDidDoc, 'Resolve DID document successfully');
                 } else {
-                    errorMessage = `The DID document has been deleted!`;
+                    errorMessage = `The DID document for the given DID was not found!`;
                     logger.error(errorMessage);
                     throw new Error(errorMessage);
                 }
