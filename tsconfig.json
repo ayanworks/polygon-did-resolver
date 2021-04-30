@@ -1,12 +1,15 @@
 {
   "compilerOptions": {
-    "target": "es6", //default is es5
+    "target": "es5", //default is es5
     "module": "commonjs", //CommonJs style module in output
-    "outDir": "dist", //change the output directory
+    "declaration": true,
+    "outDir": "./dist", //change the output directory
     "resolveJsonModule": true, //to import out json database
     "allowSyntheticDefaultImports": true,
+    "strict": true,
     "types": [
-      "node"
+      "node",
+      "jest"
     ],
     "typeRoots": [
       "./node_modules/@types"
@@ -16,6 +19,7 @@
     "src/**/*.ts" //which kind of files to compile
   ],
   "exclude": [
-    "node_modules" //which files or directories to ignore
+    "./tests",
+    "./node_modules" //which files or directories to ignore
   ]
 }
