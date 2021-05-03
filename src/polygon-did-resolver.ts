@@ -12,14 +12,12 @@ logger.level = `${CommonConstants.LOGGER_LEVEL}`;
 /**
  * Resolves DID Document
  * @param did
- * @param privateKey
  * @param url
  * @param contractAddress
  * @returns Return DID Document on chain
  */
 export async function resolveDID(
     did: string,
-    privateKey: string,
     url?: string,
     contractAddress?: string
 ): Promise<BaseResponse> {
@@ -31,11 +29,10 @@ export async function resolveDID(
         const provider: ethers.providers.JsonRpcProvider = new ethers.providers.JsonRpcProvider(
             URL
         );
-        const wallet: ethers.Wallet = new ethers.Wallet(privateKey, provider);
         const registry: ethers.Contract = new ethers.Contract(
             CONTRACT_ADDRESS,
             DidRegistryContract.abi,
-            wallet
+            provider
         );
 
         let errorMessage: string;
@@ -75,3 +72,4 @@ export async function resolveDID(
         throw error;
     }
 }
+
