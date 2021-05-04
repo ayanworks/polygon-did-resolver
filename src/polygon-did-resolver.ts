@@ -1,47 +1,59 @@
 import * as dot from "dotenv";
 import * as log4js from "log4js";
+import * as networkConfiguration from './configuration.json';
 import { ethers } from "ethers";
 import { BaseResponse } from "./base-response";
-import { default as CommonConstants } from "./configuration";
 const DidRegistryContract = require('@ayanworks/polygon-did-registry-contract');
 
 dot.config();
 const logger = log4js.getLogger();
-logger.level = `${CommonConstants.LOGGER_LEVEL}`;
+logger.level = `debug`;
 
 /**
  * Resolves DID Document
  * @param did
- * @param url
- * @param contractAddress
  * @returns Return DID Document on chain
  */
 export async function resolveDID(
     did: string,
-    url?: string,
-    contractAddress?: string
 ): Promise<BaseResponse> {
     try {
 
-        const URL: string = url || `${CommonConstants.URL}`;
-        const CONTRACT_ADDRESS: string = contractAddress || `${CommonConstants.CONTRACT_ADDRESS}`;
-
-        const provider: ethers.providers.JsonRpcProvider = new ethers.providers.JsonRpcProvider(
-            URL
-        );
-        const registry: ethers.Contract = new ethers.Contract(
-            CONTRACT_ADDRESS,
-            DidRegistryContract.abi,
-            provider
-        );
-
         let errorMessage: string;
+        let url: string;
+        let contractAddress: string;
 
-        if (did && did.match(/^did:polygon:0x[0-9a-fA-F]{40}$/)) {
-            if (did.match(/^did:polygon:\w{0,42}$/)) {
+        if (did && did.split(':')[2] === 'testnet' && did.match(/^did:polygon:testnet:0x[0-9a-fA-F]{40}$/) ||
+            did && did.match(/^did:polygon:0x[0-9a-fA-F]{40}$/)
+        ) {
+            if (did.split(':')[2] === 'testnet' && did.match(/^did:polygon:testnet:\w{0,42}$/) ||
+                did.match(/^did:polygon:\w{0,42}$/)
+            ) {
+
+                if (did && did.split(':')[2] === 'testnet') {
+
+                    url = `${networkConfiguration[0].testnet?.URL}`;
+                    contractAddress = `${networkConfiguration[0].testnet?.CONTRACT_ADDRESS}`;
+                } else {
+
+                    url = `${networkConfiguration[1].mainnet?.URL}`;
+                    contractAddress = `${networkConfiguration[1].mainnet?.CONTRACT_ADDRESS}`;
+                }
+
+                const provider: ethers.providers.JsonRpcProvider = new ethers.providers.JsonRpcProvider(
+                    url
+                );
+                const registry: ethers.Contract = new ethers.Contract(
+                    contractAddress,
+                    DidRegistryContract.abi,
+                    provider
+                );
+
+                const didAddress = did.split(":")[2] === 'testnet' ? did.split(":")[3] : did.split(":")[2];
+
                 // Calling smart contract with getting DID Document
                 let returnDidDoc: any = await registry.functions
-                    .getDID(did.split(":")[2])
+                    .getDID(didAddress)
                     .then((resValue: any) => {
                         return resValue;
                     });
@@ -72,4 +84,3 @@ export async function resolveDID(
         throw error;
     }
 }
-
