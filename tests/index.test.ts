@@ -9,11 +9,23 @@ describe("test resolver function", () => {
     let resolveDidRes: BaseResponse;
 
     it('should be polygon DID for resolve DID', async () => {
-        await expect(testDid).not.toBeNull();
-        await expect(testDid).not.toBe('');
-        await expect(testDid.slice(0, 12)).toMatch('did:polygon:');
-        await expect(testDid.slice(12, 14)).toMatch('0x');
-        await expect(testDid.split(":")[2].length).toBe(42);
+        if (testDid && testDid.split(':')[2] === 'testnet') {
+
+            await expect(testDid).toBeDefined();
+            await expect(testDid).not.toBeNull();
+            await expect(testDid).not.toBe('');
+            await expect(testDid.slice(0, 19)).toMatch('did:polygon:testnet');
+            await expect(testDid.slice(20, 22)).toMatch('0x');
+            await expect(testDid.split(":")[3].length).toBe(42);
+        } else {
+
+            await expect(testDid).toBeDefined();
+            await expect(testDid).not.toBeNull();
+            await expect(testDid).not.toBe('');
+            await expect(testDid.slice(0, 12)).toMatch('did:polygon');
+            await expect(testDid.slice(12, 14)).toMatch('0x');
+            await expect(testDid.split(":")[2].length).toBe(42);
+        }
     })
 
     it('should be private key for resolve DID', async () => {
@@ -25,7 +37,7 @@ describe("test resolver function", () => {
     })
 
     beforeAll(async () => {
-        resolveDidRes = await resolveDID(testDid, privateKey);
+        resolveDidRes = await resolveDID(testDid);
     })
 
     it('should get DID document', async () => {

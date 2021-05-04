@@ -1,6 +1,6 @@
 # Polygon DID Resolver
 
-The polygon resolver library is used for resolving DID’s in Polygon Method Space. The module is supposed to be used as an integeration to polygon library.
+The polygon resolver library is used for resolving DID’s in Polygon Method Space. The module is supposed to be used as an integration to polygon library.
 
 ## Install
 
@@ -14,7 +14,7 @@ In combination with the DID-Resolver:
 
 ```
 import { resolveDID } from "polygon-did-resolver";
-const didDocument = await resolveDID(did, url?, contractAddress?);
+const didDocument = await resolveDID(did);
 ```
 The function returns a DID Document.
 
