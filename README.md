@@ -14,11 +14,9 @@ In combination with the DID-Resolver:
 
 ```
 import { resolveDID } from "polygon-did-resolver";
-const didDocument = await resolveDID(did, privateKey, url?, contractAddress?);
+const didDocument = await resolveDID(did, url?, contractAddress?);
 ```
 The function returns a DID Document.
-
-## Testing
 
 ## Testing
 
