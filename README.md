@@ -12,7 +12,7 @@ npm install
 
 In combination with the DID-Resolver:
 
-```
+```js
 import { resolveDID } from "polygon-did-resolver";
 const didDocument = await resolveDID(did);
 ```
