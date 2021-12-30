@@ -12,7 +12,7 @@ logger.level = `debug`;
  * @param did
  * @returns Return DID Document on chain.
  */
-export async function resolveDID(did: string): Promise<BaseResponse> {
+export async function resolveDID(did: string): Promise<BaseResponse> { 
       try {
             let errorMessage: string;
             let url: string;
@@ -96,3 +96,5 @@ async function splitPolygonDid(did: string): Promise<string> {
       const splitDidValue: string = did.split(":")[2];
       return splitDidValue;
 }
+
+
