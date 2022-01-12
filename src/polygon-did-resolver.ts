@@ -1,8 +1,9 @@
 import * as log4js from "log4js";
 import * as networkConfiguration from "./configuration.json";
 import { ethers } from "ethers";
-import { BaseResponse } from "./base-response";
+import type { DIDDocument, DIDResolutionResult, DIDResolver, ParsedDID } from 'did-resolver';
 const DidRegistryContract = require("@ayanworks/polygon-did-registry-contract");
+
 
 const logger = log4js.getLogger();
 logger.level = `debug`;
@@ -12,8 +13,11 @@ logger.level = `debug`;
  * @param did
  * @returns Return DID Document on chain.
  */
-export function getResolver () {
-      async function resolve(did: string): Promise<BaseResponse> {
+
+export function getResolver (): Record<string, DIDResolver> {
+      async function resolve(did: string, parsed?: ParsedDID): Promise<DIDResolutionResult> {
+
+            const didDocumentMetadata = {}
             try {
                   let errorMessage: string;
                   let url: string;
@@ -52,21 +56,22 @@ export function getResolver () {
                                     didWithTestnet === "testnet" ? did.split(":")[3] : didWithTestnet;
       
                               // Calling smart contract with getting DID Document
-                              let returnDidDoc: any = await registry.functions
+                              let didDocument: any = await registry.functions
                                     .getDID(didAddress)
                                     .then((resValue: any) => {
                                           return resValue;
                                     });
       
                               logger.debug(
-                                    `[resolveDID] readDIDDoc - ${JSON.stringify(returnDidDoc)} \n\n\n`
+                                    `[resolveDID] readDIDDoc - ${JSON.stringify(didDocument)} \n\n\n`
                               );
       
-                              if (returnDidDoc && !returnDidDoc.includes("")) {
-                                    return BaseResponse.from(
-                                          returnDidDoc,
-                                          "Resolve DID document successfully"
-                                    );
+                              if (didDocument && !didDocument.includes("")) {
+                                    return{
+                                          didDocument,
+                                          didDocumentMetadata,
+                                          didResolutionMetadata: {}
+                                    }
                               } else {
                                     errorMessage = `The DID document for the given DID was not found!`;
                                     logger.error(errorMessage);

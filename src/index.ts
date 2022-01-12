@@ -1,1 +1,1 @@
-export { getResolver } from "./polygon-did-resolver";
+export * from "./polygon-did-resolver";

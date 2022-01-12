@@ -1,21 +1,25 @@
-export class BaseResponse {
-      public success: boolean;
-      public message: any;
-      public data: any;
+import * as didResolvers from "did-resolver";
+import * as didPolygon from './polygon-did-resolver';
 
-      public static from(
-            data: any,
-            message?: string,
-            success: boolean = true
-      ): BaseResponse {
-            const response: BaseResponse = new BaseResponse();
-            response.success = success;
-            response.data = data;
-            response.message = message;
-            return response;
-      }
 
-      constructor() {
-            this.success = false;
-      }
+export class DidResolverService {
+  public resolver: didResolvers.Resolver
+
+  public constructor() {
+
+    this.resolver = new didResolvers.Resolver(
+      {
+        ...didPolygon.getResolver(),
+      },
+      
+      { cache: true }
+    )
+  }
+
+  public resolve(didUrl: string ="did:polygon:testnet:0x78E9433504B717FD043c4C593965f32E0aB23bA5", options?: didResolvers.DIDResolutionOptions) {
+      console.log(this.resolver);
+      const resolved = this.resolver.resolve(didUrl, options);
+      console.log(resolved);
+      return (resolved);
+  }
 }
