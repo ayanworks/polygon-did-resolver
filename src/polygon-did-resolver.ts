@@ -1,7 +1,7 @@
 import * as log4js from "log4js";
 import * as networkConfiguration from "./configuration.json";
 import { ethers } from "ethers";
-import type { DIDDocument, DIDResolutionResult, DIDResolver, ParsedDID } from 'did-resolver';
+import { DIDDocument, DIDResolutionResult, DIDResolver, ParsedDID, Resolver } from 'did-resolver';
 const DidRegistryContract = require("@ayanworks/polygon-did-registry-contract");
 
 
@@ -70,7 +70,7 @@ export function getResolver (): Record<string, DIDResolver> {
                                     return{
                                           didDocument,
                                           didDocumentMetadata,
-                                          didResolutionMetadata: {}
+                                          didResolutionMetadata: {contentType: 'application/did+ld+json'}
                                     }
                               } else {
                                     errorMessage = `The DID document for the given DID was not found!`;
@@ -88,7 +88,7 @@ export function getResolver (): Record<string, DIDResolver> {
                         throw new Error(errorMessage);
                   }
             } catch (error) {
-                  logger.error(`Error occurred in resolveDID function ${error}`);
+                  logger.error(`Error occurred in resolve function ${error}`);
                   throw error;
             }
       }
