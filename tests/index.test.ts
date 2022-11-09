@@ -1,12 +1,29 @@
 import { testDid, privateKey, url, contractAddress } from "./test.data";
-import { resolveDID } from '../src/polygon-did-resolver';
-import { BaseResponse } from '../src/base-response'
+import * as didPolygon from '../src/polygon-did-resolver';
+import * as didResolvers from "did-resolver";
 
 jest.setTimeout(30000);
+let resolveDidRes:any;
+
+beforeAll(async () => {
+    let resolver: didResolvers.Resolver
+    {
+        resolver = new didResolvers.Resolver(
+            {
+                ...didPolygon.getResolver(),
+            },
+
+            { cache: true }
+        )
+    }
+   resolveDidRes = await resolver.resolve(testDid)
+   console.log("resolveDidRes:::",resolveDidRes);
+   console.log("resolveDidRes.didDocument:::",resolveDidRes.didDocument);
+})
 
 describe("test resolver function", () => {
 
-    let resolveDidRes: BaseResponse;
+
 
     it('should be polygon DID for resolve DID', async () => {
         if (testDid && testDid.split(':')[2] === 'testnet') {
@@ -27,6 +44,12 @@ describe("test resolver function", () => {
             await expect(testDid.split(":")[2].length).toBe(42);
         }
     })
+    
+    it('should get DID document', async () => {
+         await expect(resolveDidRes.didDocument).not.toBeNull();
+         
+         
+    })
 
     it('should be private key for resolve DID', async () => {
         await expect(privateKey).not.toBeNull();
@@ -34,17 +57,5 @@ describe("test resolver function", () => {
         await expect(privateKey.length).toBe(66);
         await expect(privateKey.slice(0, 2)).toMatch('0x');
 
-    })
-
-    beforeAll(async () => {
-        resolveDidRes = await resolveDID(testDid);
-    })
-
-    it('should get DID document', async () => {
-        await expect(resolveDidRes.data).not.toBeNull();
-        await expect(resolveDidRes.data).toBeDefined();
-        await expect(resolveDidRes.data).not.toBe('');
-        await expect(Object.keys(JSON.parse(resolveDidRes.data)))
-            .toEqual(expect.arrayContaining(['@context', 'id', 'verificationMethod']));
     })
 });
