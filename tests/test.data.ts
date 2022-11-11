@@ -3,6 +3,6 @@ export const testDid = '';
 
 export const privateKey = "";
 
-export const url = "https://rpc-mumbai.matic.today";
+export const url = "https://rpc-mumbai.maticvigil.com/";
 
-export const contractAddress = "0x3463F1f3D5639AFA5507493ffF207be292aC7E33";
+export const contractAddress = "0x8B335A167DA81CCef19C53eE629cf2F6291F2255";

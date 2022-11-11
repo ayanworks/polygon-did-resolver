@@ -57,7 +57,7 @@ export function getResolver (): Record<string, DIDResolver> {
       
                               // Calling smart contract with getting DID Document
                               let didDocument: any = await registry.functions
-                                    .getDID(didAddress)
+                                    .getDIDDoc(didAddress)
                                     .then((resValue: any) => {
                                           return resValue;
                                     });
