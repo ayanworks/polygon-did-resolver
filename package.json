@@ -36,11 +36,11 @@
   "dependencies": {
     "@ayanworks/polygon-did-registry-contract": "2.0.0",
     "did-resolver": "^3.1.5",
-    "ethers": "^6.7.1",
+    "ethers": "^5.1.0",
     "log4js": "^6.3.0"
   },
   "devDependencies": {
-    "@types/node": "^20.5.0",
+    "@types/node": "^18.17.0",
     "prettier": "^3.0.2",
     "release-it": "^16.1.5",
     "ts-node": "^10.9.1",

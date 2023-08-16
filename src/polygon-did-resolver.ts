@@ -1,14 +1,9 @@
+// @ts-nocheck
 import * as log4js from 'log4js'
-import { Contract, JsonRpcProvider, ethers } from 'ethers'
-import {
-  DIDDocument,
-  DIDResolutionResult,
-  DIDResolver,
-  ParsedDID,
-  Resolver,
-} from 'did-resolver'
+import { Contract, providers } from 'ethers'
+import { DIDResolutionResult, DIDResolver, ParsedDID } from 'did-resolver'
 import { networkConfig } from './config'
-const DidRegistryContract = require('@ayanworks/polygon-did-registry-contract')
+import DidRegistryContract from '@ayanworks/polygon-did-registry-contract'
 
 const logger = log4js.getLogger()
 logger.level = `debug`
@@ -50,7 +45,7 @@ export function getResolver(): Record<string, DIDResolver> {
             contractAddress = `${networkConfig.mainnet?.CONTRACT_ADDRESS}`
           }
 
-          const provider = new JsonRpcProvider(url)
+          const provider = new providers.JsonRpcProvider(url)
           const registry = new Contract(
             contractAddress,
             DidRegistryContract.abi,
