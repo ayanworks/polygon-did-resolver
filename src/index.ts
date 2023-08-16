@@ -1,1 +1,3 @@
-export * from './polygon-did-resolver'
+import { getResolver } from './resolver'
+
+export { getResolver }

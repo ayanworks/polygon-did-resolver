@@ -1,22 +1,18 @@
 import { testDid } from './fixtures/test.data'
-import * as didPolygon from '../src/polygon-did-resolver'
-import { describe, it, beforeEach } from 'node:test'
+import { getResolver } from '../src'
+import { describe, it, before } from 'node:test'
 import assert from 'node:assert'
 import { DIDResolutionResult, Resolver } from 'did-resolver'
 
-describe('test resolver function', () => {
+describe('polygon-did-resolver', () => {
   let resolveDidRes: DIDResolutionResult
-  beforeEach(async () => {
-    let resolver = new Resolver(
-      {
-        ...didPolygon.getResolver(),
-      },
-
-      { cache: true },
-    )
+  before(async () => {
+    const polygonDidResolver = getResolver()
+    let resolver = new Resolver(polygonDidResolver)
     resolveDidRes = await resolver.resolve(testDid)
   })
-  it('should be polygon DID for resolve DID', async () => {
+
+  it('should be polygon DID', async () => {
     if (testDid && testDid.split(':')[2] === 'testnet') {
       assert.strictEqual(testDid.slice(0, 19), 'did:polygon:testnet')
       assert.strictEqual(testDid.slice(20, 22), '0x')
