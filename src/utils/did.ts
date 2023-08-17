@@ -1,5 +1,5 @@
 import { networkConfig } from '../config'
-import { polygonMainnetDidRegex, polygonTestnetDidRegex } from './helpers'
+import { POLYGON_DID_REGEX } from './helpers'
 
 export function getNetworkFromDid(did: string) {
   const network = did.split(':')[2]
@@ -26,10 +26,5 @@ export function parseDid(did: string) {
 }
 
 export function validateDid(did: string) {
-  const network = getNetworkFromDid(did)
-  if (network === 'testnet') {
-    return polygonTestnetDidRegex.test(did)
-  }
-
-  return polygonMainnetDidRegex.test(did)
+  return POLYGON_DID_REGEX.test(did)
 }
