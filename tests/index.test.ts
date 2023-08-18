@@ -15,7 +15,7 @@ describe('polygon-did-resolver', () => {
   describe('Validate did document', () => {
     before(async () => {
       const polygonDidResolver = getResolver()
-      let resolver = new Resolver(polygonDidResolver)
+      const resolver = new Resolver(polygonDidResolver)
       resolveDidRes = await resolver.resolve(testDid)
     })
     it('should get DID document', async () => {
