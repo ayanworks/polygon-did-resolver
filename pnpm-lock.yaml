@@ -9,14 +9,11 @@ dependencies:
     specifier: 2.0.0
     version: 2.0.0(@babel/core@7.22.10)
   did-resolver:
-    specifier: ^3.1.5
-    version: 3.1.5
+    specifier: ^4.1.0
+    version: 4.1.0
   ethers:
     specifier: ^5.1.0
     version: 5.1.0
-  log4js:
-    specifier: ^6.3.0
-    version: 6.3.0
 
 devDependencies:
   '@types/node':
@@ -4854,24 +4851,6 @@ packages:
     dev: false
     optional: true
 
-  /date-format@2.1.0:
-    resolution:
-      {
-        integrity: sha512-bYQuGLeFxhkxNOF3rcMtiZxvCBAquGzZm6oWA1oZ0g2THUzivaRhv8uOhdr19LmoobSOLoIAxeUK2RdbM8IFTA==,
-      }
-    engines: { node: '>=4.0' }
-    deprecated: 2.x is no longer supported. Please upgrade to 4.x or higher.
-    dev: false
-
-  /date-format@3.0.0:
-    resolution:
-      {
-        integrity: sha512-eyTcpKOcamdhWJXj56DpQMo1ylSQpcGtGKXcU0Tb97+K56/CF5amAqqqNj0+KvA0iw2ynxtHWFsPDSClCxe48w==,
-      }
-    engines: { node: '>=4.0' }
-    deprecated: 3.x is no longer supported. Please upgrade to 4.x or higher.
-    dev: false
-
   /debounce-fn@4.0.0:
     resolution:
       {
@@ -5152,10 +5131,10 @@ packages:
     requiresBuild: true
     dev: false
 
-  /did-resolver@3.1.5:
+  /did-resolver@4.1.0:
     resolution:
       {
-        integrity: sha512-/4lM1vK5osnWVZ2oN9QhlWV5xOwssuLSL1MvueBc8LQWotbD5kM9XQMe7h4GydYpbh3JaWMFkOWwc9jvSZ+qgg==,
+        integrity: sha512-S6fWHvCXkZg2IhS4RcVHxwuyVejPR7c+a4Go0xbQ9ps5kILa8viiYQgrM4gfTyeTjJ0ekgJH9gk/BawTpmkbZA==,
       }
     dev: false
 
@@ -6546,13 +6525,6 @@ packages:
         integrity: sha512-b6suED+5/3rTpUBdG1gupIl8MPFCAMA0QXwmljLhvCUKcUvdE4gWky9zpuGCcXHOsz4J9wPGNWq6OKpmIzz3hQ==,
       }
     hasBin: true
-    dev: false
-
-  /flatted@2.0.2:
-    resolution:
-      {
-        integrity: sha512-r5wGx7YeOwNWNlCA0wQ86zKyDLMQr+/RB8xy74M4hTphfmjlijTSSXGuH8rnvKZnfT9i+75zmd8jcKdMR4O6jA==,
-      }
     dev: false
 
   /flatted@3.2.7:
@@ -8834,22 +8806,6 @@ packages:
       chalk: 5.3.0
       is-unicode-supported: 1.3.0
     dev: true
-
-  /log4js@6.3.0:
-    resolution:
-      {
-        integrity: sha512-Mc8jNuSFImQUIateBFwdOQcmC6Q5maU0VVvdC2R6XMb66/VnT+7WS4D/0EeNMZu1YODmJe5NIn2XftCzEocUgw==,
-      }
-    engines: { node: '>=8.0' }
-    dependencies:
-      date-format: 3.0.0
-      debug: 4.3.4(supports-color@8.1.1)
-      flatted: 2.0.2
-      rfdc: 1.3.0
-      streamroller: 2.2.4
-    transitivePeerDependencies:
-      - supports-color
-    dev: false
 
   /loglevel@1.8.1:
     resolution:
@@ -11312,13 +11268,6 @@ packages:
       }
     engines: { iojs: '>=1.0.0', node: '>=0.10.0' }
 
-  /rfdc@1.3.0:
-    resolution:
-      {
-        integrity: sha512-V2hovdzFbOi77/WajaSMXk2OLm+xNIeQdMMuB7icj7bk6zi2F8GGAxigcnDFpJHbNyNcgyJDiP+8nOrY5cZGrA==,
-      }
-    dev: false
-
   /rimraf@2.7.1:
     resolution:
       {
@@ -11951,21 +11900,6 @@ packages:
     dependencies:
       internal-slot: 1.0.5
     dev: true
-
-  /streamroller@2.2.4:
-    resolution:
-      {
-        integrity: sha512-OG79qm3AujAM9ImoqgWEY1xG4HX+Lw+yY6qZj9R1K2mhF5bEmQ849wvrb+4vt4jLMLzwXttJlQbOdPOQVRv7DQ==,
-      }
-    engines: { node: '>=8.0' }
-    deprecated: 2.x is no longer supported. Please upgrade to 3.x or higher.
-    dependencies:
-      date-format: 2.1.0
-      debug: 4.3.4(supports-color@8.1.1)
-      fs-extra: 8.1.0
-    transitivePeerDependencies:
-      - supports-color
-    dev: false
 
   /strict-uri-encode@1.1.0:
     resolution:
