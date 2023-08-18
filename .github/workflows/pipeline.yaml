@@ -79,7 +79,7 @@ jobs:
           git config --global user.name "Ajay Jadhav"
 
           if [ ${{ inputs.release-type }} == 'alpha' ]; then
-            pnpm release --preRelease=${{ inputs.release-type }} --npm.tag=latest
+            pnpm release --preRelease=${{ inputs.release-type }} --npm.tag=alpha
           else
-            pnpm release ${{ inputs.release-type }}
+            pnpm release ${{ inputs.release-type }} --npm.tag=latest
           fi
