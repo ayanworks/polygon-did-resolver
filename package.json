@@ -1,6 +1,6 @@
 {
   "name": "@ayanworks/polygon-did-resolver",
-  "version": "0.0.16-alpha.2",
+  "version": "0.0.16-alpha.3",
   "description": "The polygon resolver library is used for resolving DID’s in Polygon Method Space. The module is supposed to be used as an integeration to polygon library.",
   "license": "MIT",
   "main": "build/index.js",
