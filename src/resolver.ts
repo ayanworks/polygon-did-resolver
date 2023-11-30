@@ -1,4 +1,3 @@
-// @ts-nocheck
 import { Contract, providers } from 'ethers'
 import { DIDResolutionResult, DIDResolver } from 'did-resolver'
 import DidRegistryContract from '@ayanworks/polygon-did-registry-contract'
