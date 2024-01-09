@@ -10,7 +10,6 @@ import { parseDid, validateDid } from './utils/did'
  */
 export function getResolver(): Record<string, DIDResolver> {
   async function resolve(did: string): Promise<DIDResolutionResult> {
-    const didDocumentMetadata = {}
     try {
       const isValidDid = validateDid(did)
       if (!isValidDid) {
@@ -18,7 +17,6 @@ export function getResolver(): Record<string, DIDResolver> {
       }
 
       const parsedDid = parseDid(did)
-
       const provider = new providers.JsonRpcProvider(parsedDid.networkUrl)
       const registry = new Contract(
         parsedDid.contractAddress,
@@ -31,13 +29,17 @@ export function getResolver(): Record<string, DIDResolver> {
         parsedDid.didAddress,
       )
 
-      if (!didDocument) {
+      if (!didDocument[0]) {
         throw new Error(`The DID document for the given DID was not found!`)
       }
-      // TODO: return only the did document instead of array
+
       return {
         didDocument: JSON.parse(didDocument[0]),
-        didDocumentMetadata,
+        didDocumentMetadata: {
+          linkedResourceMetadata: didDocument[1].map((element: string) => {
+            return JSON.parse(element)
+          }),
+        },
         didResolutionMetadata: { contentType: 'application/did+ld+json' },
       }
     } catch (error) {
