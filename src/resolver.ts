@@ -34,7 +34,7 @@ export function getResolver(): Record<string, DIDResolver> {
       }
       const didDocumentJson = JSON.parse(didDocument[0])
 
-      if (!JSON.parse(didDocument[0])?.verificationMethod) {
+      if (!didDocumentJson?.verificationMethod) {
         return {
           didDocument: didDocumentJson,
           didDocumentMetadata: {
