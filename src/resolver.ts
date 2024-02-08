@@ -32,9 +32,20 @@ export function getResolver(): Record<string, DIDResolver> {
       if (!didDocument[0]) {
         throw new Error(`The DID document for the given DID was not found!`)
       }
+      const didDocumentJson = JSON.parse(didDocument[0])
 
+      if (!didDocumentJson?.verificationMethod) {
+        return {
+          didDocument: didDocumentJson,
+          didDocumentMetadata: {
+            linkedResourceMetadata: [],
+            deactivated: true,
+          },
+          didResolutionMetadata: { contentType: 'application/did+ld+json' },
+        }
+      }
       return {
-        didDocument: JSON.parse(didDocument[0]),
+        didDocument: didDocumentJson,
         didDocumentMetadata: {
           linkedResourceMetadata: didDocument[1].map((element: string) => {
             return JSON.parse(element)
