@@ -30,7 +30,14 @@ export function getResolver(): Record<string, DIDResolver> {
       )
 
       if (!didDocument[0]) {
-        throw new Error(`The DID document for the given DID was not found!`)
+        return {
+          didDocument: null,
+          didDocumentMetadata: {},
+          didResolutionMetadata: {
+            error: `NotFound!`,
+            message: `resolver_error: Unable to resolve did '${did}'`,
+          },
+        }
       }
       const didDocumentJson = JSON.parse(didDocument[0])
 
