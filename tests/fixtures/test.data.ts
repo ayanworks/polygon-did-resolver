@@ -1,5 +1,5 @@
 export const testDid =
-  'did:polygon:testnet:0x13cd23928Ae515b86592C630f56C138aE4c7B79a'
+  'did:polygon:testnet:0x4487cB2567De2Ca6dc5F79A7f6ae944522C4b698'
 
 export const url = 'https://rpc-mumbai.maticvigil.com/'
 
