@@ -1,7 +1,7 @@
 export const networkConfig = {
   testnet: {
-    URL: 'https://rpc-mumbai.maticvigil.com/',
-    CONTRACT_ADDRESS: '0x12513116875BB3E4F098Ce74624739Ee51bAf023',
+    URL: 'https://rpc-amoy.polygon.technology',
+    CONTRACT_ADDRESS: '0xc087766218b885C6283072BA316a2Bc31B5c17db',
   },
   mainnet: {
     URL: 'https://polygon-rpc.com',
