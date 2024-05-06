@@ -1,7 +1,7 @@
 export const networkConfig = {
   testnet: {
     URL: 'https://rpc-amoy.polygon.technology',
-    CONTRACT_ADDRESS: '0xc087766218b885C6283072BA316a2Bc31B5c17db',
+    CONTRACT_ADDRESS: '0xC1c392DC1073a86821B4ae37f1F0faCDcFFf45bF',
   },
   mainnet: {
     URL: 'https://polygon-rpc.com',
