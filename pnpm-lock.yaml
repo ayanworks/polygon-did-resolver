@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       '@ayanworks/polygon-did-registry-contract':
-        specifier: 2.0.1-alpha.6
-        version: 2.0.1-alpha.6
+        specifier: 2.0.1-alpha.7
+        version: 2.0.1-alpha.7
       did-resolver:
         specifier: ^4.1.0
         version: 4.1.0
@@ -36,8 +36,8 @@ importers:
 
 packages:
 
-  '@ayanworks/polygon-did-registry-contract@2.0.1-alpha.6':
-    resolution: {integrity: sha512-b/Pk0ByQdsleC1bwfP9J2lC6vkpfk4UZk7oJff3/O86Ael9rk0kQ7t3yu4Q7lh4bWEoeJ9Gij8CR1o+ImT9U7g==}
+  '@ayanworks/polygon-did-registry-contract@2.0.1-alpha.7':
+    resolution: {integrity: sha512-pwX45XsGT3LrIBpnIJ6FrzPuB3gSTWiNVSyGGniL0ofUgcsNGqXOv2g3WQSDcG9b7/+AGeoJ6tYqshCbnjsmvQ==}
 
   '@babel/code-frame@7.22.10':
     resolution: {integrity: sha512-/KKIMG4UEL35WmI9OlvMhurwtytjvXoFcGNrOvyG9zIzA8YmPjVtIZUf7b05+TPO7G7/GEmLHDaoCgACHl9hhA==}
@@ -1834,7 +1834,7 @@ packages:
 
 snapshots:
 
-  '@ayanworks/polygon-did-registry-contract@2.0.1-alpha.6': {}
+  '@ayanworks/polygon-did-registry-contract@2.0.1-alpha.7': {}
 
   '@babel/code-frame@7.22.10':
     dependencies:
