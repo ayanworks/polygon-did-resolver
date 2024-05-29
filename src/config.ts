@@ -5,6 +5,6 @@ export const networkConfig = {
   },
   mainnet: {
     URL: 'https://polygon-rpc.com',
-    CONTRACT_ADDRESS: '0x98bF771e1E93Db917A89986bcdaBa3b43643F367',
+    CONTRACT_ADDRESS: '0xdEBc41520F2d8203b282c4dc6c5973e61a14c727',
   },
 }
