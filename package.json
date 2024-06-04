@@ -34,7 +34,7 @@
     "release": "release-it"
   },
   "dependencies": {
-    "@ayanworks/polygon-did-registry-contract": "2.0.1-alpha.8",
+    "@ayanworks/polygon-did-registry-contract": "3.0.0",
     "did-resolver": "^4.1.0",
     "ethers": "^5.1.0"
   },
