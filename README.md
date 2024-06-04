@@ -5,7 +5,7 @@ The polygon resolver library is used for resolving DID’s in Polygon Method Spa
 ## Install
 
 ```
-npm install
+pnpm install
 ```
 
 ## Usage
@@ -24,5 +24,5 @@ The function returns a DID Document.
 For testing use the command
 
 ```
-npm run test
+pnpm run test
 ```
